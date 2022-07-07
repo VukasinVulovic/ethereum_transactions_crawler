@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ethereum transactions crawler task
+### Application for the Trace Labs Internship
 
-## Getting Started
+## To do:
+- [] Create ui with required inputs
+- [] Connect to an API
+- [] Connect the client to the server
+- [] Finishing touches
 
-First, run the development server:
+## Task:
+Create an application that will allow a user to view transaction data from the Ethereum blockchain associated with a specific wallet address W that the user inputs, starting with block B. The application should get information on:
+- wallets (addresses) and 
+- amounts of ETH associated with transactions made to and from the given wallet W and
+- show them in a simple human-readable way (ideally, through a web page). 
+The application should collect and display ALL transaction data starting from the given block B. 
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Example:
+If a user requests to view transactions associated with the address 0xaa7a9ca87d3694b5755f213b5d04094b8d0f0a6f from block 9000000 to the current block, your application should be able to crawl and visualize all transaction data (addresses that have sent and received tokens from the address 0xaa7a9ca87d3694b5755f213b5d04094b8d0f0a6f, and how much ETH was used for a given transaction) in that period of time.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Required inputs:
+- wallet address
+- beginning block
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Required outputs:
+- Show transactions (adresses, ammount, time)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Authors:
+- Vukašin Vulović

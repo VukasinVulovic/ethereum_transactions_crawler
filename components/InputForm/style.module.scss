@@ -1,0 +1,77 @@
+$text-color: white;
+$border-color: rgba(255, 255, 255, 0.375);
+$text-size: 1em;
+
+.input_form {
+    font-size: $text-size;
+    padding: 1em 2em;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.195);
+    box-shadow: 0 0 10px rgba(44, 44, 44, 0.671);
+    border-radius: 1em;
+    color: $text-color;
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.048);
+
+    .caption {
+        flex-basis: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        font-size: 2em;
+    }
+
+    
+    .inputs {
+        text-align: center;
+        margin: auto;
+        // max-width: 40ch;
+
+        .input_box {
+            text-align: center;
+            margin: 3em 0;
+
+            label {
+                text-align: center;
+                font-size: 1.8em;
+                display: block;
+                margin: auto;
+            }
+
+            input {
+                width: 25ch;
+                font-size: 1.8em;
+                display: block;
+                margin: auto;
+                background: none;
+                color: $text-color;
+                border: 1px solid $border-color;
+                border-radius: 0.3em;
+                padding: 0.2em 0.5em;
+                position: relative;
+                outline: none;
+            }
+
+            input:focus {
+                outline: 2px solid $text-color;   
+            }
+
+            input::placeholder {
+                opacity: 0.4;
+                color: $text-color;
+            }
+        }
+    }
+
+    .view_button {
+        display: block;
+        padding: 0.5em 2em;
+        margin: auto;
+        color: $text-color;
+        border-radius: 1em;
+        border: 1px solid $border-color;
+        background: none;
+        font-size: 1.5em;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.402);
+    }
+}
