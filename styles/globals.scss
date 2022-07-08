@@ -4,12 +4,12 @@ $root-text-color: white;
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(./fonts/MaterialIcons/MaterialIcons-Regular.ttf);
+  src: url(../public/assets/fonts/MaterialIcons-Regular.ttf);
 }
 
 @font-face {
   font-family: 'MuseoModerno';
-  src: url(./fonts/MuseoModerno-Regular.ttf);
+  src: url(../public/assets/fonts/MuseoModerno-Regular.ttf);
 }
 
 .material-icons {
@@ -42,7 +42,7 @@ html, body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  background: url(./2411783.jpg);
+  background: url(../public/assets/images/2411783.jpg);
   background-position: center center;
   background-size: cover;
   // background: #f8484b;
@@ -55,6 +55,7 @@ html, body {
   justify-content: center;
   align-items: center;
   scroll-behavior: smooth;
+  position: relative;
 }
 
 main {
@@ -64,4 +65,5 @@ main {
   transition: 0.5s;
   overflow: hidden;
   padding: 0.5em;
+  transition: 0.2s;
 }

@@ -2,42 +2,51 @@ import Head from 'next/head';
 import React from 'react';
 import InputForm from '../components/InputForm';
 import TransactionList from '../components/TransactionList';
-
-const transactions = [
-  {
-    timestamp: 'Jul-07-2022 01:40:03 PM +UTC',
-    block: 15095770,
-    hash: '0xe75eb7022a2375bf9aca15be4612149418a507db763bec793beae93ba8edb337',
-    receiver: '0x0000000000000000000000000000000000000000'
-  },
-  {
-    timestamp: 'Jul-08-2022 02:40:03 PM +UTC',
-    block: 15095220,
-    hash: '0xe75eb7022a2375bf944415be4612149418a507db763bec793beae93ba8edb337',
-    receiver: false
-  }
-];
+import ErroModal from '../components/ErrorModal';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     
     this.state = {
-      transactions: []
-    };
+      transactions: [],
+      error: null
+    }
+  }
+
+  createRequest(type, address, block) {
+    if(type)
+
+    fetch(`/api/transactions/${type}/${address}?block=${block}`)
+    .then(async res => {
+      const json = await res.json();
+
+      if(json['error']) {
+        this.setState({ error: json['error'] })
+        return;
+      }
+
+      this.setState({
+        transactions: json['transactions'],
+        error: null
+      });
+    })
+    .catch(error => this.setState({ error: error.message }));
   }
 
   render() {
     return (
       <>
         <Head>
-          <title> Ethereum transactions crawler task </title>
+          <title> Crypto transactions crawler </title>
           <meta name="description" content="Application for the Trace Labs Internship" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
   
+        { this.state.error ? <ErroModal message={this.state.error}/> : null }
+
         <main>
-          <InputForm onProcessed={() => { this.setState({ transactions }) }}/>
+          <InputForm onError={error => this.setState({ error: error })} onProcessed={(type, address, block) => this.createRequest(type, address, block)}/>
           {this.state.transactions.length > 0 ? <TransactionList transactions={this.state.transactions}/> : null}
         </main>
       </>

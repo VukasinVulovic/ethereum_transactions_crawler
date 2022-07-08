@@ -1,0 +1,70 @@
+$text-color: rgb(255, 255, 255);
+$border-color: rgb(239, 15, 15);
+$icon-color: rgba(244, 14, 14, 0.888);
+$text-size: 1em;
+
+@keyframes fade_in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;    
+    }
+}
+
+.error_modal {
+    transition: 0.5s;
+    // animation: fade_in forwards 0.5s;
+    z-index: 10;
+    font-size: $text-size;
+    padding: 0.5em 1em;
+    border: 1px solid $border-color;
+    box-shadow: 0 0 10px rgba(44, 44, 44, 0.671);
+    border-radius: 1em;
+    color: $text-color;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 7, 7, 0.235);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .close_button {
+        background: none;
+        border: none;
+        position: absolute;
+        right: 0.5em;
+        top: 0.5em;
+        color: white;
+        
+        span {
+            font-size: 2em;
+        }
+    }
+
+    .title {
+        margin: 0;
+        text-align: center;
+        color: $border-color;
+        text-shadow: 0 0 3px black;
+        font-size: 1.5em;
+        flex-basis: 100%;
+    }
+
+    .icon {
+        color: $icon-color;
+        text-shadow: 0 0 3px black;
+        font-size: 3em;
+        text-align: center;
+        position: absolute;
+        left: 0.5em;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+
+    .info {
+        margin: 0;
+        padding: 0;
+        font-size: 1em;
+    }
+}
