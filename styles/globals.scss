@@ -1,4 +1,5 @@
 $root-text-color: white;
+$root-text-size: 80%;
 
 @font-face {
   font-family: 'Material Icons';
@@ -45,6 +46,7 @@ html, body {
   background: url(../public/assets/images/2411783.jpg);
   background-position: center center;
   background-size: cover;
+  font-size: $root-text-size;
   // background: #f8484b;
   // background: -webkit-linear-gradient(to right, #f8484b, #e97942);
   // background: linear-gradient(to right, #f8484b, #e97942);
@@ -66,4 +68,15 @@ main {
   overflow: hidden;
   padding: 0.5em;
   transition: 0.2s;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    flex-direction: column;
+    max-height: calc(100vh - 1em);
+    overflow: hidden;
+    // flex-wrap: wrap;
+
+    // overflow: scroll;
+  }
 }

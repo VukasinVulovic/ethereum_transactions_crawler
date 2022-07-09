@@ -29,14 +29,16 @@ export default function handle(req:NextApiRequest, res:NextApiResponse<Transacti
         return;
     }
 
-    const startBlock = req.query.block || 0; //if start block not provided, assume start block is 0
-    const walletAddr = req.query.address;
-    const url = `https://blockchain.info/rawaddr/${walletAddr}`;
+    const [ pageSize, pageOffset ] = [ req.query.pageSize || 10, req.query.pageOffset || 0 ]; //get query params or use default
+    const [ startBlock, walletAddr ] = [ req.query.block || 0, req.query.address ]; //if start block not provided, assume start block is 0
+    
+    fetch(`https://blockchain.info/rawaddr/${walletAddr}?limit=${pageSize}&offset=${pageOffset}`) //create get request to api
+    .then(async response => {        
+        if(response.status != 200) { //api response error
+            res.status(500).json({ error: response.statusText, transactions: [] });
+            return;
+        }
 
-    fetch(url, {
-        method: 'GET'
-    })
-    .then(async response => {
         const apiResult = await response.json();
         
         if(apiResult['error']) { //api returns error
@@ -44,16 +46,24 @@ export default function handle(req:NextApiRequest, res:NextApiResponse<Transacti
             return;
         }
         
-        const transactions = apiResult['txs'].map(r => {
+        let transactions = apiResult['txs'].map(r => {
+            let receiver = r['out'][0] || null; //select first output argument
+
+            if(receiver)
+                receiver = receiver.spent ? receiver.addr : null; //if argument, wallet spent in transaction, get receiver address
+            
             return {
                 'timestamp': r['time'],
                 'block': r['block_index'],
                 'hash': r['hash'],
-                'receiver': r['to'] != walletAddr ? r['to'] : null
+                'receiver': receiver
             }
         });
         
+        if(startBlock)
+            transactions = transactions.filter(transaction => transaction.block > startBlock); //get transactions after starting block
+
         res.status(200).json({ error: false, transactions });
     })
-    .catch(error => res.status(500).json({ error, transactions: [] })); //request error
+    .catch(error => res.status(500).json({ error: error.message, transactions: [] })); //request error
 }

@@ -23,13 +23,10 @@ export default function handle(req:NextApiRequest, res:NextApiResponse<Transacti
         return;
     }
 
-    const startBlock = req.query.block || 0; //if start block not provided, assume start block is 0
-    const walletAddr = req.query.address;
-    const url = `https://api.etherscan.io/api?module=account&action=txlist&address=${walletAddr}&startblock=${startBlock}&sort=asc&apikey=${process.env['ETHERIUM_API_KEY']}`;
+    const [ pageSize, pageOffset ] = [ req.query.pageSize || 10, req.query.pageOffset || 0 ]; //get query params or use default
+    const [ startBlock, walletAddr ] = [ req.query.block || 0, req.query.address ]; //if start block not provided, assume start block is 0
 
-    fetch(url, {
-        method: 'GET'
-    })
+    fetch(`https://api.etherscan.io/api?module=account&action=txlist&address=${walletAddr}&startblock=${startBlock}&sort=asc&offset=${pageSize}&page=${pageOffset / pageSize}&apikey=${process.env['ETHERIUM_API_KEY']}`)
     .then(async response => {
         const apiResult = await response.json();
         
@@ -49,5 +46,5 @@ export default function handle(req:NextApiRequest, res:NextApiResponse<Transacti
         
         res.status(200).json({ error: false, transactions });
     })
-    .catch(error => res.status(500).json({ error, transactions: [] })); //request error
+    .catch(error => res.status(500).json({ error: error.message, transactions: [] })); //request error
 }

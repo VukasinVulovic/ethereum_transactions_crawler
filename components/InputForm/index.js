@@ -2,12 +2,10 @@ import React from 'react';
 import style from './style.module.scss';
 import EtheriumIcon from './crypto_icons/Ethereum.svg';
 import BitcoinIcon from './crypto_icons/Bitcoin.svg';
-import DogecoinIcon from './crypto_icons/Dogecoin.svg';
 
 const walletAddressRegex = {
     etherium: /^0x[a-fA-F0-9]{40}$/,
-    bitcoin: /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$/,
-    dogecoin: /^D[a-zA-Z0-9]{33}$/
+    bitcoin: /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$/
 }
 
 class InputForm extends React.Component {
@@ -103,13 +101,6 @@ class InputForm extends React.Component {
                             onClick={() => this.setState({ walletType: 'bitcoin' })}
                         >
                             <img src={BitcoinIcon}/>
-                        </a>
-
-                        <a 
-                            className={style.type_item + ' ' + (this.state.walletType === 'dogecoin' ? style.type_item_seleced : '')}
-                            onClick={() => this.setState({ walletType: 'dogecoin' })}
-                        >
-                            <img src={DogecoinIcon}/>
                         </a>
                     </section>
                 </nav>

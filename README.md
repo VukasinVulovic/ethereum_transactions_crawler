@@ -8,11 +8,11 @@
 - [] Finishing touches
 
 *Todo for 9/7/2022*
-- [] Pagination for the viewer
-- [] Add other crypto support on the backend
+- [x] Add other crypto support on the backend
 - [x] Add a nice way to show errors
-- [] Add a loader
+- [x] Add a loader
 - [] Create a form to view the price of crypto on specific date
+- [x] Pagination for the viewer
 
 ## Task:
 Create an application that will allow a user to view transaction data from the Ethereum blockchain associated with a specific wallet address W that the user inputs, starting with block B. The application should get information on:

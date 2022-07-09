@@ -2,7 +2,6 @@ $text-color: white;
 $text-size: 1em;
 
 .list {
-    // height: 100%;
     list-style: none;
     overflow: scroll;
     overflow-x: hidden;
@@ -11,7 +10,6 @@ $text-size: 1em;
     margin: 0 0 0 1em;
     padding: 0.5em;
     padding-bottom: 0.5em;
-
     font-size: $text-size;
     border: 1px solid rgba(255, 255, 255, 0.195);
     box-shadow: 0 0 10px rgba(44, 44, 44, 0.671);
@@ -32,6 +30,7 @@ $text-size: 1em;
         text-shadow: 0 0 4px rgba(0, 0, 0, 0.512);
         margin-top: 1em;
         position: relative;
+        word-wrap: break-word;
         
         .timestamp {
             position: absolute;
@@ -65,5 +64,15 @@ $text-size: 1em;
 
     .item:first-of-type {
         margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .list {
+        margin: 0;
+        margin-top: 1em;
+        max-width: calc(100vw - 3em);
+        height: 100%;
+        // overflow: scroll;
     }
 }
