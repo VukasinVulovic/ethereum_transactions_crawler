@@ -49,6 +49,10 @@ $text-size: 1em;
             font-size: 1.5em;
         }
 
+        .ammount {
+            font-size: 1.2em;
+        }
+
         .block:hover {
             font-size: 2em;
         }
@@ -77,3 +81,11 @@ $text-size: 1em;
         // overflow: scroll;
     }
 }
+
+@media screen and (max-height: 400px) {
+    .list {
+        margin-left: 0;
+        margin-top: 1em;
+        max-height: 20em;
+    }
+  }

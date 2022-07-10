@@ -1,5 +1,5 @@
 $root-text-color: white;
-$root-text-size: 1.2vh;
+$root-text-size: 0.7vw;
 
 @font-face {
   font-family: 'Material Icons';
@@ -80,7 +80,6 @@ main {
     flex-direction: column;
     max-height: 100%;
     // max-height: calc(100vh - 1em);
-    overflow: hidden;
     overflow: scroll;
   }
 }
@@ -88,6 +87,14 @@ main {
 @media screen and (max-height: 400px) {
   html, body {
     font-size: 2vh;
+    overflow: scroll;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-height: 100%;
+    // max-height: calc(100vh - 1em);
     overflow: scroll;
   }
 }

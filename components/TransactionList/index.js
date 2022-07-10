@@ -29,6 +29,7 @@ class TransactionList extends React.Component {
                         <li className={style.item} key={transaction.hash + '_' + i}> 
                             <span className={style.timestamp}> {this.convertDate(transaction.timestamp)} </span>
                             <span className={style.hash}> <h6 className={style.label}> Hash: </h6> {transaction.hash} </span>
+                            <span className={style.ammount}> <h6 className={style.label}> Ammount: </h6> {transaction.ammount} </span>
                             <span className={style.info}> <h6 className={style.label}> Block: </h6>  {transaction.block} </span>
                             {transaction.receiver ? <span className={style.info}> <h6 className={style.label}> Receiver: </h6> {transaction.receiver} </span> : null}
                         </li>

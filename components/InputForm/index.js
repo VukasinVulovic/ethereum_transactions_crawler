@@ -107,14 +107,14 @@ class InputForm extends React.Component {
 
                 <section className={style.inputs}>
                     <div className={style.input_box}>
-                        <label> Wallet Adress: </label>
-                        <input type='text' placeholder={this.getWalletName() + ' address'} onInput={e => this.setState({ walletAddress: e.target.value })}/>
+                        <label> {this.getWalletName()} Adress: </label>
+                        <input type='text' placeholder={'1234abcd'} onInput={e => this.setState({ walletAddress: e.target.value })}/>
                     </div>
 
                     <div className={style.input_box}>
                         {/* <label> Block offset ({this.state.blockOffset + '-current'}): </label> */}
                         <label> Start Block: </label>
-                        <input type='text' placeholder='From block' onInput={e => this.setBlockOffset(e.target.value)}/>
+                        <input type='text' placeholder='From block' onInput={e => this.setBlockOffset(e.target.value)} defaultValue={0}/>
                     </div>
                 </section>
 

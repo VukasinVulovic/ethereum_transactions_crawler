@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+const SAT_BTC = 0.00000001; //satoshi in bitcoin
+
 type Transaction = {
     timestamp: number,
     block: number,
@@ -50,7 +52,8 @@ export default function handle(req:NextApiRequest, res:NextApiResponse<Transacti
                 'timestamp': r['time'],
                 'block': r['block_index'],
                 'hash': r['hash'],
-                'receiver': receiver
+                'receiver': receiver,
+                'ammount': r['result'] * SAT_BTC
             }
         });
         

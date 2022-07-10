@@ -7,7 +7,7 @@ type ConvertResponse = {
 
 const typeAbbr = {
     'etherium': 'ETH',
-    'bitcoin': 'BTH'
+    'bitcoin': 'BTC'
 }
 
 export default function handle(req:NextApiRequest, res:NextApiResponse<ConvertResponse>) {
@@ -49,7 +49,9 @@ export default function handle(req:NextApiRequest, res:NextApiResponse<ConvertRe
             return; 
         }
         
-        res.status(200).json({ error: false, result: apiResult['Data']['Data'][0]['close'] });
+        const coin = apiResult['Data']['Data'][0]['close']; //Price of 1 Coin
+
+        res.status(200).json({ error: false, result: coin*req.query.ammount });
     })
     .catch(error => res.status(500).json({ error: error.message, transactions: 0 })); //request error
 }

@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+const ETH_WEI = Math.pow(10, 18); //1 ETH = 1,000,000,000,000,000,000 WEI
+
 type Transaction = {
     timestamp: number,
     block: number,
@@ -26,7 +28,7 @@ export default function handle(req:NextApiRequest, res:NextApiResponse<Transacti
     const [ pageSize, pageOffset ] = [ req.query.pageSize || 10, req.query.pageOffset || 0 ]; //get query params or use default
     const [ startBlock, walletAddr ] = [ req.query.block || 0, req.query.address ]; //if start block not provided, assume start block is 0
 
-    fetch(`https://api.etherscan.io/api?module=account&action=txlist&address=${walletAddr}&startblock=${startBlock}&sort=asc&offset=${pageSize}&page=${pageOffset / pageSize}&apikey=${process.env['ETHERIUM_API_KEY']}`)
+    fetch(`https://api.etherscan.io/api?module=account&action=txlist&address=${walletAddr}&startblock=${startBlock}&sort=desc&offset=${pageSize}&page=${pageOffset / pageSize}&apikey=${process.env['ETHERIUM_API_KEY']}`)
     .then(async response => {
         const apiResult = await response.json();
         
@@ -40,6 +42,7 @@ export default function handle(req:NextApiRequest, res:NextApiResponse<Transacti
                 'timestamp': r['timeStamp'],
                 'block': r['blockNumber'],
                 'hash': r['hash'],
+                'ammount': r['value'] / ETH_WEI, //convert from WEI to ETH
                 'receiver': r['to'] != walletAddr ? r['to'] : null
             }
         });
