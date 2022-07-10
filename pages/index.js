@@ -4,6 +4,7 @@ import InputForm from '../components/InputForm';
 import TransactionList from '../components/TransactionList';
 import ErrorModal from '../components/ErrorModal';
 import Loader from '../components/Loader';
+import CryptoConverter from '../components/CryptoConverter';
 
 class App extends React.Component {
   constructor(props) {
@@ -88,9 +89,10 @@ class App extends React.Component {
         </Head>
   
         { this.state.error ? <ErrorModal message={this.state.error}/> : null }
-        { this.state.loading ? <Loader /> : null }
+        { this.state.loading ? <Loader/> : null }
 
         <main>
+          <CryptoConverter onError={error => this.setState({ error: error })}/>
           <InputForm onError={error => this.setState({ error: error })} onProcessed={this.runSearchQuery.bind(this)}/>
           {this.state.transactions.length > 0 ? <TransactionList triggerOffset={0} onScrolledToEnd={this.scrolledToEnd.bind(this)} transactions={this.state.transactions}/> : null}
         </main>

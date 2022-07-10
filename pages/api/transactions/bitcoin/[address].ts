@@ -1,11 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-// const walletAddressRegex = {
-//     ethereum: ,
-//     bitcoin: ,
-//     dogecoin: /^D[a-zA-Z0-9]{33}$/
-// }
-
 type Transaction = {
     timestamp: number,
     block: number,

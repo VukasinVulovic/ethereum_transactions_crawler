@@ -11,7 +11,7 @@
 - [x] Add other crypto support on the backend
 - [x] Add a nice way to show errors
 - [x] Add a loader
-- [] Create a form to view the price of crypto on specific date
+- [x] Create a form to view the price of crypto on specific date
 - [x] Pagination for the viewer
 
 ## Task:

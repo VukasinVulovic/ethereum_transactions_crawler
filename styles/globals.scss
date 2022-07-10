@@ -1,5 +1,5 @@
 $root-text-color: white;
-$root-text-size: 80%;
+$root-text-size: 1.2vh;
 
 @font-face {
   font-family: 'Material Icons';
@@ -71,12 +71,23 @@ main {
 }
 
 @media screen and (max-width: 600px) {
+  html, body {
+    font-size: 70%;
+    overflow: scroll;
+  }
+
   main {
     flex-direction: column;
-    max-height: calc(100vh - 1em);
+    max-height: 100%;
+    // max-height: calc(100vh - 1em);
     overflow: hidden;
-    // flex-wrap: wrap;
+    overflow: scroll;
+  }
+}
 
-    // overflow: scroll;
+@media screen and (max-height: 400px) {
+  html, body {
+    font-size: 2vh;
+    overflow: scroll;
   }
 }

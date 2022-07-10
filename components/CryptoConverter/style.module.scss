@@ -2,7 +2,7 @@ $text-color: white;
 $border-color: rgba(255, 255, 255, 0.375);
 $text-size: 1em;
 
-.input_form {
+.calculator {
     font-size: $text-size;
     padding: 1em 2em;
     position: relative;
@@ -12,7 +12,7 @@ $text-size: 1em;
     color: $text-color;
     backdrop-filter: blur(2px);
     background-color: rgba(0, 0, 0, 0.048);
-    margin-left: 0.5em;
+    margin-right: 0.5em;
 
     .type_selector {
         padding: 0;
@@ -116,6 +116,20 @@ $text-size: 1em;
         }
     }
 
+    .result_box {
+        .caption {
+            font-size: 2em;
+        }
+
+        .result {
+            font-size: 2em;
+            padding: 0;
+            margin: 0;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+    }
+
     .view_button {
         display: block;
         padding: 0.5em 2em;
@@ -130,8 +144,8 @@ $text-size: 1em;
 }
 
 @media screen and (max-width: 600px) {
-    .input_form {
-        margin-left: 0;
-        margin-top: 0.5em;
+    .calculator {
+        margin-right: 0;
+        margin-bottom: 0.5em;
     }
 }
